@@ -1,0 +1,89 @@
+
+<div class="container">
+    <div class="test">
+        <a class="uk-button custom-button" href="#modal-center" uk-toggle>Add Product</a>
+    </div>
+    <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let item of dataArray">
+            <div class="card h-100 position-relative">
+                <img class="card-img-top" [src]="item.product_image" (click)="openModal(item.product_image)">
+                <div class="card-body">
+                    <div class="label-value">
+                        <span class="bold-label">Name:</span>
+                        <span>{{item.product_name}}</span>
+                    </div>
+                    <div class="label-value">
+                        <span class="bold-label">Number:</span>
+                        <span>{{item.product_number}}</span>
+                    </div>
+                    <div class="label-value">
+                        <span class="bold-label">Size:</span>
+                        <span>{{item.product_size}}</span>
+                    </div>
+                    <div class="label-value">
+                        <span class="bold-label">Price:</span>
+                        <span>{{item.product_price}} {{item.currency}}</span>
+                    </div>
+                </div>
+                <div class="delete-icon" (click)="confirmDelete(item.id)" style="cursor: pointer; position: absolute; top: 10px; right: 10px; color: red;">
+                    <i class="fas fa-times"></i> <!-- Font Awesome "X" icon -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal for displaying the larger image -->
+<div class="modal" [ngClass]="{'show': isModalOpen}" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <img [src]="selectedImage" class="modal-image">
+    </div>
+  </div>
+  <div id="modal-center" class="uk-flex-top" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+
+        <h2 class="uk-modal-title">Add Product</h2>
+
+        <form id="product-form" #f="ngForm" (ngSubmit)="addprodcut(f)" enctype="multipart/form-data">
+            <div class="uk-margin">
+                <label class="uk-form-label" for="product-number">Product Number</label>
+                <input class="uk-input" type="text" id="product-number" name="product_number" #product_number="ngModel" ngModel required>
+            </div>
+
+            <div class="uk-margin">
+                <label class="uk-form-label" for="product-name">Product Name</label>
+                <input class="uk-input" type="text" id="product-name" name="product_name" #product_name="ngModel" ngModel required>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label" for="product-size">Product size</label>
+                <input class="uk-input" type="text" id="product_size" name="product_size" #product_size="ngModel" ngModel required>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label" for="product-price">Price</label>
+                <div class="uk-grid-small" uk-grid>
+                    <div class="uk-width-auto">
+                        <select class="uk-select" name="currency" #currency="ngModel" ngModel required>
+                            <option value="USD">USD</option>
+                            <option value="SYP">SYP</option>
+                        </select>
+                    </div>
+                    <div class="uk-width-expand">
+                        <input class="uk-input" type="number" id="product-price" name="product_price" #product_price="ngModel" ngModel required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="uk-margin">
+                <label class="uk-form-label" for="product-image">Upload Image</label>
+                <input type="url" class="form-control" id="image-url" name="product_image" #product_image="ngModel" ngModel placeholder="Enter image URL">
+            </div>
+
+            <div class="uk-margin">
+                <button class="uk-button uk-button-primary" type="submit" [disabled]="f.invalid">Submit</button>
+            </div>
+        </form>
+
+    </div>
+</div>

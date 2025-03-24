@@ -1,0 +1,52 @@
+<div class="container position-relative">
+  <button class="wishlist-button" (click)="toggleWishlist()">
+    Wishlist
+  </button>
+  <div class="wishlist-panel" *ngIf="isWishlistOpen">
+    <div class="wishlist-content">
+      <div *ngIf="wishlistItems.length === 0" class="no-items">No items</div>
+      <div *ngFor="let item of wishlistItems" class="wishlist-item">
+        <img [src]="item.product_image" class="wishlist-item-image">
+        <span class="wishlist-item-number">{{item.product_number}}</span>
+        <i class="fas fa-times remove-icon" (click)="removeFromWishlist(item.product_number)"></i>
+      </div>
+      <button class="order-btn" *ngIf="wishlistItems.length > 0" (click)="orderViaWhatsApp()">Order</button>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let item of dataArray">
+          <div class="card h-100">
+              <img class="card-img-top" [src]="item.product_image" (click)="openModal(item.product_image)">
+              <div class="card-body">
+                  <div class="label-value">
+                      <span class="bold-label">Name:</span>
+                      <span>{{item.product_name}}</span>
+                  </div>
+                  <div class="label-value">
+                    <span class="bold-label">Number:</span>
+                    <span>{{item.product_number}}</span>
+                </div>
+                <div class="label-value">
+                    <span class="bold-label">Size:</span>
+                    <span>{{item.product_size}}</span>
+                </div>
+                  <div class="label-value">
+                      <span class="bold-label">Price:</span>
+                      <span>{{item.product_price}} {{item.currency}}</span>
+                  </div>
+              </div>
+              <button class="add-to-wishlist-btn" (click)="addToWishlist(item)">
+                Add to Wishlist
+              </button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Modal for displaying the larger image -->
+<div class="modal" [ngClass]="{'show': isModalOpen}" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <img [src]="selectedImage" class="modal-image">
+  </div>
+</div>

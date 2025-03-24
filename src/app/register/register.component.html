@@ -1,0 +1,73 @@
+<div class="uk-section uk-section-muted uk-flex uk-flex-middle uk-animation-fade" uk-height-viewport>
+    <div class="uk-width-1-1">
+        <div class="uk-container">
+            <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
+                <div class="uk-width-1-1@m">
+                    <div
+                        class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+                        <h3 class="uk-card-title uk-text-center">Create an Account</h3>
+                        <form (ngSubmit)="register(f)" #f="ngForm">
+                            <div class="uk-margin">
+                                <div class="uk-inline uk-width-1-1">
+                                    <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                    <input class="uk-input uk-form-large" type="text" id="name" ngModel #name="ngModel"
+                                        name="name" placeholder="Name" required>
+                                </div>
+                                <!-- Error message for Name -->
+                                <div *ngIf="name.invalid && name.touched" class="uk-text-danger">
+                                    Name is required.
+                                </div>
+                                <div class="uk-form-icon uk-form-icon-flip" *ngIf="name.invalid && name.touched">
+                                    <span uk-icon="icon: warning"></span>
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <div class="uk-inline uk-width-1-1">
+                                    <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                                    <input class="uk-input uk-form-large" type="email" id="email" ngModel
+                                        #email="ngModel" name="email" placeholder="Email" required email>
+                                </div>
+                                <div *ngIf="email.errors?.required && email.touched" class="uk-text-danger">
+                                    Email is required.
+                                </div>
+                                <div *ngIf="email.errors?.email && email.touched" class="uk-text-danger">
+                                    Insert Valid Email.
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <div class="uk-inline uk-width-1-1">
+                                    <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                                    <input class="uk-input uk-form-large" type="password" id="password" ngModel
+                                        #password="ngModel" name="password" placeholder="Password" required
+                                        minlength="6" maxlength="8">
+                                </div>
+                                <div *ngIf="password.errors?.required && password.touched" class="uk-text-danger">
+                                    Password is required.
+                                </div>
+                                <div *ngIf="password.errors?.minlength && password.touched" class="uk-text-danger">
+                                    Password must be at least 6 characters long.
+                                </div>
+                                <div *ngIf="password.errors?.maxlength && password.touched" class="uk-text-danger">
+                                    Password cannot be more than 8 characters long.
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <div class="uk-inline uk-width-1-1">
+                                    <textarea class="uk-textarea uk-form-large" id="bio" ngModel #bio="ngModel"
+                                        name="bio" placeholder="Bio" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <button class="uk-button uk-button-primary uk-button-large uk-width-1-1" type="submit"
+                                    [disabled]="f.invalid">Sign Up</button>
+                            </div>
+                            <div class="uk-text-small uk-text-center">
+                                Already have an account? <a [routerLink]="['/login']">Sign In</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

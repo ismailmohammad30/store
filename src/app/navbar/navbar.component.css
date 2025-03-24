@@ -1,0 +1,144 @@
+/* Navbar CSS */
+.navbar {
+    background-color: #1E3A8A; /* Dark Blue Color */
+    color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .navbar-logo {
+    font-size: 22px; /* Reduced the font size of the logo */
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: color 0.3s;
+    margin-left: 20px; /* Space from the left edge */
+  }
+  
+  .navbar-logo:hover {
+    color: #ff6347; /* Logo color change on hover */
+  }
+  
+  /* Navbar Menu */
+  .navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Increase space between items */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar-item {
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px; /* Added padding to make items more clickable */
+    border-radius: 4px;
+    transition: color 0.3s, background-color 0.3s;
+  }
+  
+  /* Hover effect for navbar items */
+  .navbar-item:hover {
+    color: #fff;
+    background-color: #3B82F6; /* Light Blue when hovered */
+  }
+  
+  /* Active item styling */
+  .navbar-item.active {
+    color: #fff;
+    background-color: #2563EB; /* Blue when active */
+  }
+  
+  /* Button Styling for logout */
+  .btn {
+    padding: 8px 16px;
+    background-color: #EF4444; /* Red color for logout */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-color: #DC2626; /* Darker red on hover */
+  }
+  
+  /* Mobile Menu (Hidden by default) */
+  @media (max-width: 768px) {
+    .navbar-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: #1E3A8A;
+      padding: 20px;
+      z-index: 1000;
+    }
+  
+    .navbar-menu.active {
+      display: flex; /* Show the menu when active */
+    }
+  
+    .navbar-item {
+      padding: 12px 16px;
+      border-bottom: 1px solid #444;
+      text-align: center;
+    }
+  
+    .navbar-logo {
+      font-size: 20px;
+      margin-left: 0;
+    }
+  }
+  
+  .hamburger {
+    display: none;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    .hamburger {
+      display: block;
+    }
+  }
+/* Icon styling for the logout icon */
+.navbar-item i {
+    font-size: 20px; /* Adjust the size of the icon */
+    margin-right: 8px; /* Space between icon and any potential text (if necessary) */
+    transition: color 0.3s;
+  }
+  
+  /* Hover effect for logout icon */
+  .navbar-item:hover i {
+    color: #ff6347; /* Change color when hovering */
+  }
+  
+  /* Optional: Add some padding and hover effects to navbar item */
+  .navbar-item {
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: color 0.3s, background-color 0.3s;
+  }
+    

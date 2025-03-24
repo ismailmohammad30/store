@@ -1,0 +1,36 @@
+<nav class="navbar">
+    <div class="navbar-container">
+      <!-- Logo -->
+      <a href="#" class="navbar-logo">MyWebsite</a>
+      <span class="hamburger" (click)="toggleMenu()">&#9776;</span>
+      <ul class="navbar-menu" [ngClass]="{'active': isMenuActive}">
+        <li>
+          <a class="navbar-item" [routerLink]="['home']" (click)="closeMenu()">Home</a>
+        </li>
+        <li>
+          <a class="navbar-item" [routerLink]="['/products']" (click)="closeMenu()">Products</a>
+        </li>
+        <li *ngIf="isUser">
+          <a class="navbar-item" [routerLink]="['/profile']" (click)="closeMenu()">Profile</a>
+        </li>
+        <li *ngIf="isUser">
+          <a class="navbar-item" [routerLink]="['/myproducts']" (click)="closeMenu()">My Products</a>
+        </li>
+        <li>
+            <a class="navbar-item" [routerLink]="['/contacts']" (click)="closeMenu()">Contacts</a>
+          </li>
+        <li *ngIf="!isUser">
+            <a class="navbar-item signup" [routerLink]="['/register']" (click)="closeMenu()">Sign Up</a>
+          </li>
+          <li *ngIf="!isUser">
+            <a class="navbar-item signin" [routerLink]="['/login']" (click)="closeMenu()">Sign In</a>
+          </li>
+        <li *ngIf="isUser">
+          <a class="navbar-item" (click)="logout()">
+            <i class="fas fa-sign-out-alt"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
